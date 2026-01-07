@@ -1,0 +1,165 @@
+/* --- GERAL DA SEÇÃO --- */
+.section-title-upper {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.section-title-main {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Títulos das Colunas (PERFIL / SKILLS) */
+.column-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+/* Linha Divisória Vertical */
+@media (min-width: 992px) {
+  .profile-column {
+    border-right: 1px solid #ddd; /* Linha cinza suave */
+    padding-right: 3rem;
+  }
+}
+
+/* --- TEXTOS E LISTAS --- */
+.profile-list li strong {
+  color: #111;
+  font-weight: 700;
+  margin-right: 5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.skill-info {
+  font-size: 0.9rem;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.skill-info strong {
+  font-weight: 800;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.bullet {
+  margin: 0 5px;
+  color: #333;
+}
+
+/* --- BARRAS DE PROGRESSO --- */
+.custom-progress {
+  height: 6px;
+  background-color: #d1d1d1;
+  border-radius: 0;
+  overflow: visible; /* Permite o balão sair da caixa */
+  margin-top: 10px;
+}
+
+.custom-progress .progress-bar {
+  background-color: #111;
+  position: relative;
+  overflow: visible;
+}
+
+/* Balãozinho (Tooltip) */
+.skill-tooltip {
+  position: absolute;
+  right: -15px;
+  top: -32px;
+  background-color: #333;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Setinha do Balão */
+.skill-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 4px 0;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* --- SLIDERS E ANIMAÇÕES --- */
+
+/* Altura fixa para evitar que os pontinhos pulem */
+.slider-min-height {
+  min-height: 220px; /* Ajuste este valor se seu conteúdo for maior */
+  position: relative;
+}
+
+.skill-slide, .profile-slide {
+  display: none;
+  animation: fadeIn 0.5s;
+}
+
+.skill-slide.active, .profile-slide.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Pontinhos de Paginação */
+.pagination-container {
+  display: flex;
+  justify-content: center; /* Centraliza os pontinhos */
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot:hover {
+  background-color: #999;
+}
+
+.dot.active {
+  background-color: #ff4500;
+}
+
+/* --- BOTÃO DOWNLOAD CV --- */
+.btn-dark-custom {
+  display: inline-block;
+  background-color: #222;
+  color: #fff !important; /* Força a cor branca */
+  padding: 15px 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: none;
+  margin-top: 30px;
+}
+
+.btn-dark-custom:hover {
+  background-color: #ff4500; /* Laranja ao passar o mouse */
+  color: #fff;
+}

@@ -1,0 +1,33 @@
+/* --- NAVBAR (Barra de Navegação) --- */
+
+/* Fixa e com a cor pedida */
+#mainNav {
+  background-color: #222; /* Cor exata que você pediu */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave para destacar do fundo */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  transition: all 0.3s;
+}
+
+/* Estilo dos Links */
+#mainNav .navbar-nav .nav-item .nav-link {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Efeito ao passar o mouse (Hover) e link ativo */
+#mainNav .navbar-nav .nav-item .nav-link:hover,
+#mainNav .navbar-nav .nav-item .nav-link.active {
+  color: #ff4500; /* Usei o mesmo laranja do seu Hero para combinar */
+}
+
+/* Ajuste para o nome/logo */
+#mainNav .navbar-brand {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
