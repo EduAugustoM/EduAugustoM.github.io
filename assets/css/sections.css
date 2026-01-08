@@ -163,3 +163,533 @@
   background-color: #ff4500; /* Laranja ao passar o mouse */
   color: #fff;
 }
+
+/* --- SEÇÃO RESUMO (TIMELINE SLIDER) --- */
+
+#resumo {
+  background-color: #f9f9f9;
+}
+
+/* Títulos das Categorias (Experiência, Cursos...) */
+.text-highlight {
+  color: #ff4500; /* SEU LARANJA */
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Área do Slide com altura mínima para evitar pulos */
+.resume-wrapper {
+  min-height: 200px; /* Altura fixa para estabilizar o layout */
+  position: relative;
+}
+
+/* Oculta todos os slides por padrão */
+.resume-slide {
+  display: none;
+  animation: fadeIn 0.5s;
+}
+
+/* Mostra apenas o ativo */
+.resume-slide.active {
+  display: block;
+}
+
+/* --- ESTRUTURA DO ITEM (1 por slide) --- */
+.resume-item {
+  display: flex;
+  margin-bottom: 0; /* Remove margem extra pois é um só por vez */
+  position: relative;
+}
+
+/* Coluna da Esquerda (Data e Local) */
+.resume-left {
+  width: 25%;
+  text-align: right;
+  padding-right: 20px;
+  padding-top: 5px;
+}
+
+.resume-company {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #222; /* SEU CINZA */
+  display: block;
+}
+
+.resume-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* O Ícone Central */
+.resume-icon-box {
+  width: 40px;
+  height: 40px;
+  background-color: #222; /* SEU CINZA NO FUNDO DO ICONE */
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  flex-shrink: 0;
+  border: 2px solid #fff; /* Borda branca para destacar */
+  box-shadow: 0 0 0 3px #f9f9f9; /* Truque para separar da linha */
+}
+
+/* Coluna da Direita (Conteúdo) */
+.resume-right {
+  width: 70%;
+  padding-left: 20px;
+  padding-top: 5px;
+  position: relative;
+  border-left: 1px solid #ccc; /* Linha Vertical Fixa */
+  margin-left: -20px; /* Puxa para alinhar com o centro do ícone */
+  padding-bottom: 20px;
+}
+
+.resume-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222; /* SEU CINZA */
+  margin-bottom: 10px;
+}
+
+.resume-desc {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Paginação (Pontinhos) */
+.resume-pagination {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 60px; /* Espaço entre categorias */
+}
+
+/* Bolinha Ativa Laranja */
+.dot.active {
+  background-color: #ff4500 !important; /* SEU LARANJA */
+}
+
+/* --- SEÇÃO PORTFÓLIO --- */
+
+#portfolio {
+  background-color: #ffffff; /* Fundo branco para destacar as imagens */
+}
+
+.portfolio-desc {
+  font-size: 1rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 3rem auto; /* Centraliza e dá espaço abaixo */
+  line-height: 1.6;
+}
+
+/* Container do Projeto Individual */
+.project-box {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* Título Pequeno em Cima da Imagem (Categoria) */
+.project-category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Área da Imagem (onde ocorre o hover) */
+.project-image-container {
+  position: relative;
+  overflow: hidden; /* Garante que nada saia da caixa */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+/* A Imagem em si */
+.project-image-container img {
+  width: 100%;
+  height: 500px; /* Altura fixa para todos ficarem iguais */
+  object-fit: cover; /* Corta a imagem para preencher sem esticar */
+  transition: transform 0.5s ease;
+}
+
+/* O Efeito de Zoom na imagem ao passar o mouse */
+.project-image-container:hover img {
+  transform: scale(1.1);
+}
+
+/* A Máscara Escura com Texto (Overlay) */
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 69, 0, 0.9); /* Seu Laranja (#ff4500) com transparência */
+  /* Se preferir preto: background: rgba(0, 0, 0, 0.8); */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  
+  opacity: 0; /* Invisível por padrão */
+  transition: opacity 0.3s ease;
+}
+
+/* Mostra o Overlay ao passar o mouse */
+.project-image-container:hover .project-overlay {
+  opacity: 1;
+}
+
+/* Textos dentro do Overlay */
+.project-title {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  transform: translateY(20px); /* Efeito de subir */
+  transition: transform 0.3s ease;
+}
+
+.project-text {
+  color: #fff;
+  font-size: 0.9rem;
+  transform: translateY(20px);
+  transition: transform 0.3s ease 0.1s; /* Pequeno delay */
+}
+
+/* Animação de subida do texto */
+.project-image-container:hover .project-title,
+.project-image-container:hover .project-text {
+  transform: translateY(0);
+}
+
+/* --- CORREÇÃO DO SLIDER PORTFÓLIO --- */
+
+/* Esconde todos os slides do portfólio por padrão */
+.portfolio-slide {
+  display: none; 
+  animation: fadeIn 0.5s; /* Reaproveita a animação suave que já criamos */
+}
+
+/* Mostra APENAS o slide que tiver a classe 'active' */
+.portfolio-slide.active {
+  display: block;
+}
+
+/* Garante que os pontinhos tenham a cor certa quando ativos */
+.portfolio-dot.active {
+  background-color: #ff4500; /* Seu laranja */
+}
+
+/* --- SEÇÃO SERVIÇOS --- */
+
+#servicos {
+  /* Imagem de fundo tecnológica (circuitos/dados) */
+  background-image: url('../images/hero-bg.jpg'); 
+  background-size: cover;
+  background-attachment: fixed; /* Efeito Parallax (fundo parado ao rolar) */
+  background-position: center;
+  position: relative;
+  color: #fff; /* Texto todo branco */
+  padding-bottom: 80px; /* Espaço extra para os pontinhos não colarem no fim */
+}
+
+/* Camada escura por cima da imagem para o texto ficar legível */
+#servicos::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: rgba(0, 0, 0, 0.85); /* Escurece 85% */
+  z-index: 1;
+}
+
+/* Garante que o conteúdo fique acima da camada escura */
+#servicos .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ajuste dos títulos para fundo escuro */
+#servicos .section-title-upper {
+  color: #ff4500; /* Seu Laranja */
+  font-weight: 800;
+}
+
+#servicos .section-title-main {
+  color: #fff;
+}
+
+#servicos .line-separator {
+  background-color: #ff4500;
+}
+
+#servicos .text-muted {
+  color: #ccc !important; /* Força o texto descritivo a ser cinza claro */
+}
+
+/* --- CAIXA DE SERVIÇO (ITEM) --- */
+.service-box {
+  background-color: transparent; /* Sem fundo, direto no dark */
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-10px); /* Leve subida ao passar o mouse */
+}
+
+/* Ícone Redondo com Borda */
+.service-icon {
+  margin-bottom: 20px;
+  display: inline-block;
+  font-size: 2.5rem;
+  color: #ff4500; /* Laranja */
+  width: 80px;
+  height: 80px;
+  line-height: 80px; /* Centraliza verticalmente */
+  border: 3px solid #ff4500;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.service-box:hover .service-icon {
+  background-color: #ff4500;
+  color: #fff; /* Inverte as cores no hover */
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.6); /* Brilho laranja */
+}
+
+.service-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.service-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* --- SLIDER DE SERVIÇOS --- */
+.service-slide {
+  display: none;
+  animation: fadeIn 0.6s;
+}
+
+.service-slide.active {
+  display: block;
+}
+
+/* Pontinhos de Paginação (Brancos e Laranja) */
+.service-pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.service-dot {
+  height: 12px;
+  width: 12px;
+  background-color: #666; /* Cinza escuro inativo */
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 5px;
+}
+
+.service-dot:hover {
+  background-color: #999;
+}
+
+.service-dot.active {
+  background-color: #ff4500; /* Laranja ativo */
+  transform: scale(1.2); /* Fica um pouquinho maior */
+}
+
+/* --- FAIXA CONTADORES --- */
+.section-counters {
+  background-color: #ff4500; /* Seu Laranja do tema */
+  padding: 60px 0;
+  position: relative;
+  z-index: 2; /* Garante que fique acima de qualquer elemento de fundo */
+}
+
+.counter-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #fff;
+  opacity: 0.8;
+}
+
+/* O número grande */
+.counter-num {
+  font-size: 2.5rem;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.counter-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* --- FAIXA CITAÇÃO --- */
+.section-quote {
+  background-color: #f1f1f1; /* Cinza bem claro como na imagem */
+  color: #333;
+}
+
+.quote-author {
+  font-weight: 700;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+/* Estilo "Itálico e Diferente" */
+.quote-text {
+  font-family: "Georgia", "Times New Roman", serif; /* Fonte serifada clássica */
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  display: inline; /* Para ficar entre as aspas */
+  margin: 0 10px;
+}
+
+/* Ícones de Aspas */
+.quote-icon-left, .quote-icon-right {
+  font-size: 1.5rem;
+  color: #ff4500; /* Laranja nas aspas */
+  vertical-align: top;
+}
+
+/* --- SEÇÃO CONTATO (RODAPÉ) --- */
+.section-footer {
+  background-color: #111; /* Fundo bem escuro */
+  color: #fff;
+  padding: 80px 0 40px 0;
+}
+
+.footer-upper-title {
+  color: #ff4500; /* Seu Laranja */
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.footer-main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer-subtitle {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+/* Botão WhatsApp Grande */
+.btn-whatsapp-footer {
+  background-color: #ff4500;
+  color: #fff;
+  padding: 15px 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px; /* Levemente arredondado */
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid #ff4500;
+}
+
+.btn-whatsapp-footer:hover {
+  background-color: transparent; /* Fica transparente com borda laranja */
+  color: #ff4500;
+}
+
+/* Ícones Sociais Rodapé */
+.footer-socials a {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.footer-socials a:hover {
+  color: #ff4500;
+}
+
+.copyright-text {
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.copyright-text strong {
+  color: #fff;
+}
+
+/* --- BOTÃO VOLTAR AO TOPO --- */
+.back-to-top {
+  position: fixed;
+  visibility: hidden; /* Escondido por padrão */
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #ff4500;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #e03e00; /* Laranja um pouco mais escuro */
+  color: #fff;
+}
+
+/* Classe que o JS vai adicionar para mostrar o botão */
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
