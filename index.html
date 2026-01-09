@@ -58,14 +58,13 @@
     </div>
   </div>
 
-<section id="sobre" class="section-sobre py-5">
+  <section id="sobre" class="section-sobre py-5" style="max-width: 1000px; margin: 0 auto;">
     <div class="container">
-      
-      <div class="row mb-5">
+      <div class="row">
         <div class="col-12 text-center">
           <h4 class="section-title-upper">SOBRE</h4>
           <h2 class="section-title-main">Quem sou</h2>
-          <div class="line-separator mx-auto"></div>
+          <div class="line-separator"></div>
         </div>
       </div>
 
@@ -84,15 +83,16 @@
           <p class="text-muted mb-4">
             Minhas informações e idiomas.
           </p>
+          <ul class="list-unstyled profile-list">
+            <li class="mb-3"><strong>NOME:</strong> Eduardo Augusto</li>
+            <li class="mb-3"><strong>DATA DE NASCIMENTO:</strong> 04/09/1995</li>
+            <li class="mb-3"><strong>FORMAÇÃO:</strong> Engenharia Civil, Sistemas de Informação e Ciência de dados</li>
+          </ul>
 
           <div class="slider-min-height">
             
             <div class="profile-slide active" data-profile-slide="1">
-              <ul class="list-unstyled profile-list">
-                <li class="mb-3"><strong>NOME:</strong> Eduardo Augusto</li>
-                <li class="mb-3"><strong>DATA DE NASCIMENTO:</strong> 04/09/1995</li>
-                <li class="mb-3"><strong>PROFISSÃO:</strong> Engenheiro de dados, Cientista de dados</li>
-              </ul>
+
               
               <div class="skill-item mt-4">
                 <p class="skill-info mb-1"><strong>PORTUGUÊS</strong> <span class="bullet">•</span> nativo</p>
@@ -109,10 +109,13 @@
                   <div class="progress-bar" style="width: 80%"><span class="skill-tooltip">80%</span></div>
                 </div>
               </div>
+            </div>
+
+            <div class="profile-slide" data-profile-slide="3">
                <div class="skill-item mt-4">
                 <p class="skill-info mb-1"><strong>ESPANHOL</strong> <span class="bullet">•</span> básico</p>
                 <div class="progress custom-progress">
-                  <div class="progress-bar" style="width: 30%"><span class="skill-tooltip">30%</span></div>
+                  <div class="progress-bar" style="width: 45%"><span class="skill-tooltip">45%</span></div>
                 </div>
               </div>
             </div>
@@ -120,6 +123,7 @@
           </div> <div class="pagination-container">
             <span class="dot profile-dot active" onclick="changeProfileSlide(1)"></span>
             <span class="dot profile-dot" onclick="changeProfileSlide(2)"></span>
+            <span class="dot profile-dot" onclick="changeProfileSlide(3)"></span>
           </div>
         </div>
 
@@ -201,12 +205,12 @@
         <div class="col-12 text-center">
           <h4 class="section-title-upper">RESUMO</h4>
           <h2 class="section-title-main">Minhas credenciais</h2>
-          <div class="line-separator mx-auto"></div>
-          <p class="text-muted mt-3">Estes são os principais pontos de ganho de experiência e títulos.</p>
+          <div class="line-separator"></div>
+          <p class="text-muted">Estes são os principais pontos de ganho de experiência e títulos.</p>
         </div>
       </div>
 
-      <div id="xp-group"> 
+      <div id="xp-group" style="max-width: 850px; margin: 0 auto;"> 
         <h3 class="text-highlight">Experiências</h3>
         
         <div class="resume-wrapper">
@@ -220,7 +224,7 @@
               <div class="resume-icon-box"><i class="bi bi-eye"></i></div>
               <div class="resume-right">
                 <h4 class="resume-title">Professor Docente</h4>
-                <p class="resume-desc">
+                <p class="resume-desc" >
                   Atuo como professor em disciplinas relacionadas a Big Data. Engenharia, ciência e arquitetura de dados; modelagem de banco de dados.
                 </p>
               </div>
@@ -267,7 +271,7 @@
       </div>
 
 
-      <div id="cursos-group">
+      <div id="cursos-group" style="max-width: 850px; margin: 0 auto;">
         <h3 class="text-highlight">Cursos</h3>
         
         <div class="resume-wrapper">
@@ -308,13 +312,14 @@
 
     </div>
   </section>
+
   <section id="portfolio" class="py-5">
     <div class="container">
-      
-      <div class="row mb-4">
+      <div class="row">
         <div class="col-12 text-center">
-          <h4 class="section-title-upper text-highlight">PORTFÓLIO</h4> <h2 class="section-title-main">Confira alguns dos meus projetos</h2>
-          <div class="line-separator mx-auto"></div>
+          <h4 class="section-title-upper">PORTFÓLIO</h4> 
+          <h2 class="section-title-main">Meus Projetos</h2>
+          <div class="line-separator"></div>
         </div>
       </div>
 
@@ -407,14 +412,14 @@
 
     </div>
   </section>
-  <section id="servicos" class="py-5">
+
+  <section id="servicos" class="py-5 section-dark">
     <div class="container">
-      
       <div class="row mb-5">
         <div class="col-12 text-center">
           <h4 class="section-title-upper">SERVIÇOS</h4>
-          <h2 class="section-title-main">O que eu posso fazer por você?</h2>
-          <div class="line-separator mx-auto mb-4"></div>
+          <h2 class="section-title-main">O que posso fazer por você?</h2>
+          <div class="line-separator mb-4"></div>
           <p class="text-muted text-center mx-auto" style="max-width: 700px;">
             Estes são alguns trabalhos em que posso utilizar minhas habilidades para gerar soluções eficientes e eficazes em problemas que você possa enfrentar.
           </p>
@@ -579,12 +584,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   
-  <section id="contato" class="section-footer">
-    <div class="container text-center">
-      
-      <h4 class="footer-upper-title">CONTATO</h4>
-      <h2 class="footer-main-title">FALE COMIGO!</h2>
-      <p class="footer-subtitle">Será uma honra poder te ajudar!</p>
+  <section id="contato" class="section-footer section-dark">
+      <div class="container text-center">
+        
+        <h4 class="section-title-upper">CONTATO</h4>
+        <h2 class="section-title-main">FALE COMIGO!</h2>
+        <div class="line-separator mx-auto mb-4"></div>
+        
+        <p class="text-muted mb-5">Será uma honra poder te ajudar!</p>
 
       <div class="mt-5 mb-5">
         <a href="https://wa.me/5564992008086" target="_blank" rel="noopener noreferrer" aria-label="WhatsaApp" class="btn btn-whatsapp-footer">

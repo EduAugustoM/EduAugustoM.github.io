@@ -1,8 +1,46 @@
+/* =========================================
+   FONTES GLOBAIS
+   ========================================= */
+
+/* 1. Importando a 'Open Sans' do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+/* 2. Configuração Padrão (HTML e Body) */
 html {
-  scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
-  scroll-padding-top: 80px; /* Garante que o título da seção não fique escondido atrás da navbar */
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
-  font-family: sans-serif; /* Apenas garantindo uma fonte padrão */
+  /* Open Sans para o texto corrido: Limpa, moderna e super legível */
+  font-family: 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: #444;       
+  line-height: 1.7;  /* Um pouco mais de espaço entre linhas fica elegante */
+}
+
+/* 3. Configuração de Títulos (Century Gothic) */
+h1, h2, h3, h4, h5, h6,
+.section-title-main,
+.section-title-upper,
+.hero-title,
+.navbar-brand,
+.nav-link,
+.btn,
+.resume-date,      
+.project-category, 
+.footer-upper-title,
+.counter-num,
+.service-title,    /* Adicionei titulo de serviço para garantir */
+.column-title {
+  
+  /* Century Gothic (Geométrica) */
+  font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif;
+  letter-spacing: -0.5px; 
+}
+
+/* A Citação continua com serifa para destaque, mas usaremos a Georgia (padrão) */
+.quote-text {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
 }

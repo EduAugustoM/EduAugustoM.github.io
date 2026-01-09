@@ -5,7 +5,7 @@
   /* Cor laranja de fundo */
   background-color: #ff4500; 
   /* Sua imagem de fundo mesclada de forma discreta */
-  background-image: url('../images/hero-bg.jpg');
+  background-image: url('../images/hero-bg.png');
   background-size: cover;
   background-position: center;
   /* Mistura a imagem com a cor laranja */
@@ -40,6 +40,7 @@
   font-size: 1.3rem;
   color: #444;
   font-weight: 500;
+  text-shadow: #ffffff 0px 0px 30px;
 }
 
 /* Estilo do Botão "SOBRE MIM" */

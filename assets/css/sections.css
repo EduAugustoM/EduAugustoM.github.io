@@ -1,35 +1,89 @@
-/* --- GERAL DA SEÇÃO --- */
+/* =========================================
+   1. PADRÕES GLOBAIS DE SEÇÃO (DESIGN SYSTEM)
+   ========================================= */
+
+/* Espaçamento padrão entre seções */
+section {
+  position: relative;
+}
+
+/* --- TÍTULOS --- */
+
+/* O subtítulo pequeno (ex: "PORTFOLIO", "CONTATO") */
 .section-title-upper {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #333;
-  margin-bottom: 0;
+  font-size: 0.9rem;       /* Pequeno e elegante */
+  font-weight: 800;        /* Bem grosso */
+  color: #ff4500;          /* Seu Laranja Padrão */
+  letter-spacing: 2px;     /* Espaçamento entre letras */
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;          /* Garante que fique em linha própria */
 }
 
+/* O título principal (ex: "MEUS PROJETOS") */
 .section-title-main {
-  font-size: 3rem;
+  font-size: 2.8rem;       /* Tamanho único para todos */
   font-weight: 700;
-  color: #111;
+  color: #111;             /* Preto padrão */
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-/* Títulos das Colunas (PERFIL / SKILLS) */
+/* A linha separadora */
+.line-separator {
+  width: 400px;
+  height: 2px;
+  background-color: #ff4500; /* Laranja */
+  margin: 0 auto 2rem auto;  /* Centralizado e com margem em baixo */
+}
+
+/* --- MODO ESCURO (Para Serviços e Contato) --- */
+/* Basta adicionar a classe .section-dark na section ou div pai */
+.section-dark .section-title-main {
+  color: #fff !important;
+}
+
+.section-dark .text-muted {
+  color: #ccc !important;
+}
+
+.section-dark .section-title-upper {
+  /* Mantém laranja, ou pode mudar se quiser */
+  color: #ff4500; 
+}
+
+
+/* =========================================
+   2. SEÇÃO SOBRE (Profile & Skills)
+   ========================================= */
+
+/* Títulos das Colunas Internas (PERFIL / SKILLS) */
 .column-title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
+  color: #111;
+  border-left: 3px solid #ff4500; /* Detalhe visual extra */
+  padding-left: 10px;
 }
 
-/* Linha Divisória Vertical */
+/* Linha Divisória Vertical (Desktop) */
 @media (min-width: 992px) {
   .profile-column {
-    border-right: 1px solid #ddd; /* Linha cinza suave */
+    border-right: 1px solid #ddd;
     padding-right: 3rem;
   }
 }
 
-/* --- TEXTOS E LISTAS --- */
+/* Listas e Textos */
+.profile-list li {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
 .profile-list li strong {
   color: #111;
   font-weight: 700;
@@ -38,52 +92,53 @@
   font-size: 0.85rem;
 }
 
+/* Skill Info (Nome • Nível) */
 .skill-info {
   font-size: 0.9rem;
   color: #555;
   text-transform: uppercase;
+  display: flex;
 }
 
 .skill-info strong {
   font-weight: 800;
   color: #111;
-  letter-spacing: 0.5px;
 }
 
 .bullet {
   margin: 0 5px;
-  color: #333;
+  color: #ff4500; /* Bullet laranja para combinar */
 }
 
-/* --- BARRAS DE PROGRESSO --- */
+/* Barras de Progresso */
 .custom-progress {
-  height: 6px;
-  background-color: #d1d1d1;
-  border-radius: 0;
-  overflow: visible; /* Permite o balão sair da caixa */
-  margin-top: 10px;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 1%; /* Levemente arredondado */
+  overflow: visible;
+  margin-top: 8px;
 }
 
 .custom-progress .progress-bar {
   background-color: #111;
+  border-radius: 1%;
   position: relative;
   overflow: visible;
 }
 
-/* Balãozinho (Tooltip) */
+/* Tooltip (Balãozinho) */
 .skill-tooltip {
   position: absolute;
-  right: -15px;
-  top: -32px;
-  background-color: #333;
+  right: 0;
+  top: -35px;
+  background-color: #111;
   color: #fff;
   font-size: 0.75rem;
   font-weight: bold;
-  padding: 2px 6px;
+  padding: 3px 8px;
   border-radius: 4px;
 }
 
-/* Setinha do Balão */
 .skill-tooltip::after {
   content: "";
   position: absolute;
@@ -92,23 +147,28 @@
   transform: translateX(-50%);
   border-width: 4px 4px 0;
   border-style: solid;
-  border-color: #333 transparent transparent transparent;
+  border-color: #111 transparent transparent transparent;
 }
 
-/* --- SLIDERS E ANIMAÇÕES --- */
-
-/* Altura fixa para evitar que os pontinhos pulem */
-.slider-min-height {
-  min-height: 220px; /* Ajuste este valor se seu conteúdo for maior */
+.skill-slide {
+  min-height: 215px;
   position: relative;
-}
-
-.skill-slide, .profile-slide {
   display: none;
-  animation: fadeIn 0.5s;
+  animation: slideInRight 0.5s;
 }
 
-.skill-slide.active, .profile-slide.active {
+.profile-slide {
+  min-height: 50px;
+  position: relative;
+  display: none;
+  animation: slideInRight 0.5s;
+}
+
+.skill-slide.active {
+  display: block;
+}
+
+.profile-slide.active {
   display: block;
 }
 
@@ -117,94 +177,87 @@
   to { opacity: 1; }
 }
 
-/* Pontinhos de Paginação */
+/* Paginação (Pontinhos) */
 .pagination-container {
   display: flex;
-  justify-content: center; /* Centraliza os pontinhos */
-  gap: 10px;
-  margin-top: 20px;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1rem;
 }
 
 .dot {
+  display: inline-block;
   height: 12px;
   width: 12px;
   background-color: #ccc;
   border-radius: 50%;
-  display: inline-block;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
 }
 
-.dot:hover {
-  background-color: #999;
+.dot:hover { background-color: #999; }
+.dot.active { 
+  background-color: #ff4500; 
+  transform: scale(1.1);
 }
 
-.dot.active {
-  background-color: #ff4500;
-}
-
-/* --- BOTÃO DOWNLOAD CV --- */
+/* Botão Download CV */
 .btn-dark-custom {
   display: inline-block;
-  background-color: #222;
-  color: #fff !important; /* Força a cor branca */
+  background-color: #111;
+  color: #fff !important;
   padding: 15px 40px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-radius: 0;
+  border: 2px solid #111;
+  border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s;
-  border: none;
   margin-top: 30px;
 }
 
 .btn-dark-custom:hover {
-  background-color: #ff4500; /* Laranja ao passar o mouse */
+  background-color: #ff4500;
+  border-color: #ff4500;
   color: #fff;
 }
 
-/* --- SEÇÃO RESUMO (TIMELINE SLIDER) --- */
+
+/* =========================================
+   3. SEÇÃO RESUMO (TIMELINE)
+   ========================================= */
 
 #resumo {
-  background-color: #f9f9f9;
+  background-color: #f8f9fa; /* Cinza bem claro */
 }
 
-/* Títulos das Categorias (Experiência, Cursos...) */
 .text-highlight {
-  color: #ff4500; /* SEU LARANJA */
+  /* Mantido para subtítulos internos como 'Experiências' */
+  color: #ff4500;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
   text-align: center;
 }
 
-/* Área do Slide com altura mínima para evitar pulos */
 .resume-wrapper {
-  min-height: 200px; /* Altura fixa para estabilizar o layout */
+  min-height: 150px;
   position: relative;
 }
 
-/* Oculta todos os slides por padrão */
 .resume-slide {
   display: none;
-  animation: fadeIn 0.5s;
+  animation: slideInRight 0.5s;
 }
+.resume-slide.active { display: block; }
 
-/* Mostra apenas o ativo */
-.resume-slide.active {
-  display: block;
-}
-
-/* --- ESTRUTURA DO ITEM (1 por slide) --- */
 .resume-item {
   display: flex;
-  margin-bottom: 0; /* Remove margem extra pois é um só por vez */
   position: relative;
 }
 
-/* Coluna da Esquerda (Data e Local) */
 .resume-left {
   width: 25%;
   text-align: right;
@@ -215,20 +268,20 @@
 .resume-company {
   font-weight: 800;
   font-size: 0.95rem;
-  color: #222; /* SEU CINZA */
+  color: #111;
   display: block;
 }
 
 .resume-date {
   font-size: 0.8rem;
-  color: #777;
+  color: #666;
+  font-style: italic;
 }
 
-/* O Ícone Central */
 .resume-icon-box {
   width: 40px;
   height: 40px;
-  background-color: #222; /* SEU CINZA NO FUNDO DO ICONE */
+  background-color: #111;
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -236,26 +289,25 @@
   justify-content: center;
   z-index: 2;
   flex-shrink: 0;
-  border: 2px solid #fff; /* Borda branca para destacar */
-  box-shadow: 0 0 0 3px #f9f9f9; /* Truque para separar da linha */
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 3px #f8f9fa; /* Corrigido para bater com o fundo */
 }
 
-/* Coluna da Direita (Conteúdo) */
 .resume-right {
   width: 70%;
-  padding-left: 20px;
+  padding-left: 35px;
   padding-top: 5px;
   position: relative;
-  border-left: 1px solid #ccc; /* Linha Vertical Fixa */
-  margin-left: -20px; /* Puxa para alinhar com o centro do ícone */
+  border-left: 1px solid #ccc;
+  margin-left: -20px;
   padding-bottom: 20px;
 }
 
 .resume-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #222; /* SEU CINZA */
-  margin-bottom: 10px;
+  color: #111;
+  margin-bottom: 8px;
 }
 
 .resume-desc {
@@ -264,103 +316,85 @@
   line-height: 1.6;
 }
 
-/* Paginação (Pontinhos) */
 .resume-pagination {
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 60px; /* Espaço entre categorias */
+  margin-top: 15px;
+  margin-bottom: 50px;
 }
 
-/* Bolinha Ativa Laranja */
-.dot.active {
-  background-color: #ff4500 !important; /* SEU LARANJA */
-}
 
-/* --- SEÇÃO PORTFÓLIO --- */
+/* =========================================
+   4. SEÇÃO PORTFÓLIO
+   ========================================= */
 
 #portfolio {
-  background-color: #ffffff; /* Fundo branco para destacar as imagens */
+  background-color: #fff;
 }
 
 .portfolio-desc {
   font-size: 1rem;
   color: #666;
   max-width: 800px;
-  margin: 0 auto 3rem auto; /* Centraliza e dá espaço abaixo */
+  margin: 0 auto 3rem auto;
   line-height: 1.6;
 }
 
-/* Container do Projeto Individual */
 .project-box {
   margin-bottom: 30px;
   position: relative;
 }
 
-/* Título Pequeno em Cima da Imagem (Categoria) */
 .project-category {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #333;
+  color: #999; /* Mais suave */
   margin-bottom: 10px;
   text-align: center;
 }
 
-/* Área da Imagem (onde ocorre o hover) */
 .project-image-container {
   position: relative;
-  overflow: hidden; /* Garante que nada saia da caixa */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
   cursor: pointer;
 }
 
-/* A Imagem em si */
 .project-image-container img {
   width: 100%;
-  height: 500px; /* Altura fixa para todos ficarem iguais */
-  object-fit: cover; /* Corta a imagem para preencher sem esticar */
+  height: 500px; /* Ajustado para um tamanho bom */
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-/* O Efeito de Zoom na imagem ao passar o mouse */
 .project-image-container:hover img {
   transform: scale(1.1);
 }
 
-/* A Máscara Escura com Texto (Overlay) */
 .project-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 69, 0, 0.9); /* Seu Laranja (#ff4500) com transparência */
-  /* Se preferir preto: background: rgba(0, 0, 0, 0.8); */
-  
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(255, 69, 0, 0.9);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 20px;
-  
-  opacity: 0; /* Invisível por padrão */
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-/* Mostra o Overlay ao passar o mouse */
-.project-image-container:hover .project-overlay {
-  opacity: 1;
-}
+.project-image-container:hover .project-overlay { opacity: 1; }
 
-/* Textos dentro do Overlay */
 .project-title {
   color: #fff;
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 10px;
-  transform: translateY(20px); /* Efeito de subir */
+  transform: translateY(20px);
   transition: transform 0.3s ease;
 }
 
@@ -368,101 +402,73 @@
   color: #fff;
   font-size: 0.9rem;
   transform: translateY(20px);
-  transition: transform 0.3s ease 0.1s; /* Pequeno delay */
+  transition: transform 0.3s ease 0.1s;
 }
 
-/* Animação de subida do texto */
 .project-image-container:hover .project-title,
 .project-image-container:hover .project-text {
   transform: translateY(0);
 }
 
-/* --- CORREÇÃO DO SLIDER PORTFÓLIO --- */
-
-/* Esconde todos os slides do portfólio por padrão */
-.portfolio-slide {
-  display: none; 
-  animation: fadeIn 0.5s; /* Reaproveita a animação suave que já criamos */
+/* Slider Portfólio */
+.portfolio-slide { display: none; animation: slideInRight 0.5s; }
+.portfolio-slide.active { display: block; }
+.portfolio-pagination { margin-top: 2rem; }
+.portfolio-dot {
+  height: 12px; width: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 4px;
 }
+.portfolio-dot.active { background-color: #ff4500; }
 
-/* Mostra APENAS o slide que tiver a classe 'active' */
-.portfolio-slide.active {
-  display: block;
-}
 
-/* Garante que os pontinhos tenham a cor certa quando ativos */
-.portfolio-dot.active {
-  background-color: #ff4500; /* Seu laranja */
-}
-
-/* --- SEÇÃO SERVIÇOS --- */
+/* =========================================
+   5. SEÇÃO SERVIÇOS (Dark Mode)
+   ========================================= */
 
 #servicos {
-  /* Imagem de fundo tecnológica (circuitos/dados) */
-  background-image: url('../images/hero-bg.jpg'); 
+  background-image: url('../images/hero-bg.png'); /* Sua imagem de fundo */
   background-size: cover;
-  background-attachment: fixed; /* Efeito Parallax (fundo parado ao rolar) */
+  background-attachment: fixed;
   background-position: center;
   position: relative;
-  color: #fff; /* Texto todo branco */
-  padding-bottom: 80px; /* Espaço extra para os pontinhos não colarem no fim */
+  padding-bottom: 80px;
 }
 
-/* Camada escura por cima da imagem para o texto ficar legível */
 #servicos::before {
   content: "";
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  background: rgba(0, 0, 0, 0.85); /* Escurece 85% */
+  background: rgba(0, 0, 0, 0.85); /* Fundo escuro */
   z-index: 1;
 }
 
-/* Garante que o conteúdo fique acima da camada escura */
 #servicos .container {
   position: relative;
   z-index: 2;
 }
 
-/* Ajuste dos títulos para fundo escuro */
-#servicos .section-title-upper {
-  color: #ff4500; /* Seu Laranja */
-  font-weight: 800;
-}
-
-#servicos .section-title-main {
-  color: #fff;
-}
-
-#servicos .line-separator {
-  background-color: #ff4500;
-}
-
-#servicos .text-muted {
-  color: #ccc !important; /* Força o texto descritivo a ser cinza claro */
-}
-
-/* --- CAIXA DE SERVIÇO (ITEM) --- */
+/* Itens de Serviço */
 .service-box {
-  background-color: transparent; /* Sem fundo, direto no dark */
+  background-color: transparent;
   padding: 20px;
   text-align: center;
   margin-bottom: 30px;
   transition: transform 0.3s ease;
 }
 
-.service-box:hover {
-  transform: translateY(-10px); /* Leve subida ao passar o mouse */
-}
+.service-box:hover { transform: translateY(-10px); }
 
-/* Ícone Redondo com Borda */
 .service-icon {
   margin-bottom: 20px;
   display: inline-block;
   font-size: 2.5rem;
-  color: #ff4500; /* Laranja */
-  width: 80px;
-  height: 80px;
-  line-height: 80px; /* Centraliza verticalmente */
+  color: #ff4500;
+  width: 80px; height: 80px;
+  line-height: 80px;
   border: 3px solid #ff4500;
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -470,8 +476,8 @@
 
 .service-box:hover .service-icon {
   background-color: #ff4500;
-  color: #fff; /* Inverte as cores no hover */
-  box-shadow: 0 0 15px rgba(255, 69, 0, 0.6); /* Brilho laranja */
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
 }
 
 .service-title {
@@ -485,140 +491,64 @@
 .service-desc {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #ddd;
+  color: #ccc;
 }
 
-/* --- SLIDER DE SERVIÇOS --- */
-.service-slide {
-  display: none;
-  animation: fadeIn 0.6s;
-}
-
-.service-slide.active {
-  display: block;
-}
-
-/* Pontinhos de Paginação (Brancos e Laranja) */
-.service-pagination {
-  margin-top: 20px;
-  text-align: center;
-}
+.service-slide { display: none; animation: slideInRight 0.6s; }
+.service-slide.active { display: block; }
+.service-pagination { margin-top: 20px; text-align: center; }
 
 .service-dot {
-  height: 12px;
-  width: 12px;
-  background-color: #666; /* Cinza escuro inativo */
+  height: 12px; width: 12px;
+  background-color: #555; /* Dot escuro para fundo escuro */
   border-radius: 50%;
   display: inline-block;
   cursor: pointer;
-  transition: background-color 0.3s;
   margin: 0 5px;
+  transition: 0.3s;
 }
+.service-dot.active { background-color: #ff4500; transform: scale(1.2); }
 
-.service-dot:hover {
-  background-color: #999;
-}
 
-.service-dot.active {
-  background-color: #ff4500; /* Laranja ativo */
-  transform: scale(1.2); /* Fica um pouquinho maior */
-}
+/* =========================================
+   6. EXTRAS (Contadores, Citação, Footer)
+   ========================================= */
 
-/* --- FAIXA CONTADORES --- */
 .section-counters {
-  background-color: #ff4500; /* Seu Laranja do tema */
+  background-color: #ff4500;
   padding: 60px 0;
   position: relative;
-  z-index: 2; /* Garante que fique acima de qualquer elemento de fundo */
+  z-index: 2;
 }
+.counter-num { font-size: 2.5rem; font-weight: 800; display: block; margin-bottom: 5px; }
+.counter-text { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
+.counter-icon { font-size: 2rem; margin-bottom: 10px; color: #fff; opacity: 0.8; }
 
-.counter-icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #fff;
-  opacity: 0.8;
-}
-
-/* O número grande */
-.counter-num {
-  font-size: 2.5rem;
-  font-weight: 800;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.counter-text {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  opacity: 0.9;
-  margin: 0;
-}
-
-/* --- FAIXA CITAÇÃO --- */
 .section-quote {
-  background-color: #f1f1f1; /* Cinza bem claro como na imagem */
+  background-color: #f1f1f1;
   color: #333;
 }
-
-.quote-author {
-  font-weight: 700;
-  color: #111;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-}
-
-/* Estilo "Itálico e Diferente" */
+.quote-author { font-weight: 700; color: #111; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
 .quote-text {
-  font-family: "Georgia", "Times New Roman", serif; /* Fonte serifada clássica */
+  font-family: "Georgia", serif;
   font-style: italic;
   font-size: 1.2rem;
   line-height: 1.8;
   color: #555;
-  display: inline; /* Para ficar entre as aspas */
+  display: inline;
   margin: 0 10px;
 }
+.quote-icon-left, .quote-icon-right { font-size: 1.5rem; color: #ff4500; vertical-align: top; }
 
-/* Ícones de Aspas */
-.quote-icon-left, .quote-icon-right {
-  font-size: 1.5rem;
-  color: #ff4500; /* Laranja nas aspas */
-  vertical-align: top;
-}
-
-/* --- SEÇÃO CONTATO (RODAPÉ) --- */
+/* --- RODAPÉ / CONTATO --- */
+/* Note que agora ele usa .section-footer mas os titulos serão padronizados no HTML */
 .section-footer {
-  background-color: #111; /* Fundo bem escuro */
+  background-color: #111;
   color: #fff;
   padding: 80px 0 40px 0;
 }
 
-.footer-upper-title {
-  color: #ff4500; /* Seu Laranja */
-  font-size: 0.9rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.footer-main-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-.footer-subtitle {
-  color: #ccc;
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
-}
-
-/* Botão WhatsApp Grande */
+/* Botão WhatsApp */
 .btn-whatsapp-footer {
   background-color: #ff4500;
   color: #fff;
@@ -627,69 +557,53 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-radius: 4px; /* Levemente arredondado */
+  border-radius: 4px;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
   border: 2px solid #ff4500;
 }
-
 .btn-whatsapp-footer:hover {
-  background-color: transparent; /* Fica transparente com borda laranja */
+  background-color: transparent;
   color: #ff4500;
+  border-color: #ff4500;
 }
 
-/* Ícones Sociais Rodapé */
-.footer-socials a {
-  font-size: 1.5rem;
-  color: #fff;
-  margin: 0 10px;
-  transition: color 0.3s;
-}
-
-.footer-socials a:hover {
-  color: #ff4500;
-}
+.footer-socials a { font-size: 1.5rem; color: #fff; margin: 0 10px; transition: color 0.3s; }
+.footer-socials a:hover { color: #ff4500; }
 
 .copyright-text {
-  border-top: 1px solid #333;
+  border-top: 1px solid #222;
   padding-top: 20px;
   color: #666;
   font-size: 0.9rem;
+  margin-top: 3rem;
 }
+.copyright-text strong { color: #fff; }
 
-.copyright-text strong {
-  color: #fff;
-}
-
-/* --- BOTÃO VOLTAR AO TOPO --- */
+/* Back to Top */
 .back-to-top {
   position: fixed;
-  visibility: hidden; /* Escondido por padrão */
+  visibility: hidden;
   opacity: 0;
-  right: 15px;
-  bottom: 15px;
+  right: 15px; bottom: 15px;
   z-index: 996;
   background: #ff4500;
-  width: 40px;
-  height: 40px;
+  width: 40px; height: 40px;
   border-radius: 4px;
   transition: all 0.4s;
 }
+.back-to-top i { font-size: 28px; color: #fff; line-height: 0; }
+.back-to-top:hover { background: #e03e00; color: #fff; }
+.back-to-top.active { visibility: visible; opacity: 1; }
 
-.back-to-top i {
-  font-size: 28px;
-  color: #fff;
-  line-height: 0;
-}
-
-.back-to-top:hover {
-  background: #e03e00; /* Laranja um pouco mais escuro */
-  color: #fff;
-}
-
-/* Classe que o JS vai adicionar para mostrar o botão */
-.back-to-top.active {
-  visibility: visible;
-  opacity: 1;
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px); /* Começa 30px para a direita */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
