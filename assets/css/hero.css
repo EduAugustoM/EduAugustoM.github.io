@@ -17,7 +17,7 @@
 /* Estilo da Foto Quadrada */
 .hero-profile-img {
   width: 200px;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
   border: 8px solid #fff; /* Borda branca grossa */
   box-shadow: 0px 10px 15px rgba(0,0,0,0.2);

@@ -243,7 +243,7 @@ section {
 }
 
 .resume-wrapper {
-  min-height: 150px;
+  min-height: 250px;
   position: relative;
 }
 
@@ -320,6 +320,17 @@ section {
   text-align: center;
   margin-top: 15px;
   margin-bottom: 50px;
+}
+
+a.resume-company {
+  text-decoration: none; /* Remove o sublinhado*/
+  transition: all 0.3s ease; /* Suaviza a troca de cor */
+  cursor: pointer;
+}
+
+a.resume-company:hover {
+  color: #ff4500 !important; 
+  transform: translateX(-5px); 
 }
 
 
